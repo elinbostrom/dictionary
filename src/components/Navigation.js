@@ -3,9 +3,23 @@ import { FaMinus, FaPlus } from 'react-icons/fa'
 import { createUseStyles, useTheme } from 'react-jss';
 import { Button } from './Button'
 
-export const Navigation = ({ counter, setCounter }) => {
-  const increment = () => setCounter(prevState => prevState + 1);
-  const decrement = () => setCounter(prevState => prevState - 1);
+export const Navigation = ({ counter, setCounter, setIsLoading }) => {
+  const increment = () => {
+    setIsLoading(true)
+    const timer = setTimeout(() => {
+      setCounter(prevState => prevState + 1)
+      setIsLoading(false)
+    }, 1000);
+    return () => clearTimeout(timer);
+  };
+  const decrement = () => {
+    setIsLoading(true)
+    const timer = setTimeout(() => {
+      setCounter(prevState => prevState - 1)
+      setIsLoading(false)
+    }, 1000);
+    return () => clearTimeout(timer);
+  };
 
   const theme = useTheme()
   const classes = styles({ theme })
@@ -48,7 +62,8 @@ const styles = createUseStyles({
     cursor: 'pointer',
     display: 'flex',
     padding: '1rem 2rem',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginInline: '1rem'
   },
   text: {
     fontFamily: ({ theme }) => theme.font,

@@ -24,7 +24,7 @@ const styles = createUseStyles({
     display: 'grid',
     gridTemplateColumns: '30px auto',
     minWidth: 170,
-    padding: '1rem 2rem',
+    padding: '1rem 1.5rem',
     textTransform: 'uppercase',
 
     '&:hover': {
