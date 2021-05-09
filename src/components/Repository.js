@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import { FaStar } from 'react-icons/fa';
+import { createUseStyles, useTheme } from 'react-jss';
 
 export const Repository = ({ index }) => {
   const [currentRepo, setCurrentRepo] = useState(null)
+  const theme = useTheme()
+  const classes = styles({ theme })
+
 
   useEffect(() => {
     const repositoryArray = [
@@ -21,12 +26,15 @@ export const Repository = ({ index }) => {
   }, [index])
 
   return (
-    <article>
+    <article className={classes.card}>
       {currentRepo && !currentRepo.message ?
         (
           <>
             <h1>{currentRepo.full_name}</h1>
-            <strong>{currentRepo.stargazers_count}</strong>
+            <strong className={classes.strong}>
+              <FaStar />
+              {currentRepo.stargazers_count}
+            </strong>
             <p>{currentRepo.description}</p>
           </>
         ) :
@@ -35,3 +43,21 @@ export const Repository = ({ index }) => {
     </article>
   )
 }
+
+
+const styles = createUseStyles({
+  card: {
+    background: ({ theme }) => theme.background,
+    borderRadius: ({ theme }) => theme.radii,
+    color: 'white',
+    fontFamily: ({ theme }) => theme.font,
+    padding: '2rem 3rem',
+    marginInline: '1rem',
+  },
+  strong: {
+    alignItems: 'center',
+    fontWeight: '100',
+    fontStyle: 'italic',
+    display: 'flex',
+  }
+})
