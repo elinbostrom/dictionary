@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React from 'react'
 import { FaStar } from 'react-icons/fa';
 import { createUseStyles, useTheme } from 'react-jss';
 import { Error } from './Error';
@@ -36,17 +36,18 @@ const styles = createUseStyles({
     fontFamily: ({ theme }) => theme.font,
     padding: '2rem 3rem',
     marginInline: '1rem',
-    animation: '$fadeIn 600ms'
+    minHeight: 500,
+    boxShadow: ({ theme }) => theme.shadow,
   },
   text: {
-    animation: '$fadeIn 600ms'
+    animation: '$fadeIn 1s'
   },
   strong: {
     alignItems: 'center',
     fontWeight: '100',
     fontStyle: 'italic',
     display: 'flex',
-    animation: '$fadeIn 600ms',
+    animation: '$fadeIn 1s',
 
     '& svg': {
       color: 'gold',

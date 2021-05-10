@@ -18,7 +18,7 @@ const styles = createUseStyles({
     borderRadius: ({ theme }) => theme.radii,
     marginInline: '1rem',
     padding: '2rem 3rem',
-    animation: '$fadeIn 600ms'
+    minHeight: 500
   },
   text: {
     fontFamily: ({ theme }) => theme.font,

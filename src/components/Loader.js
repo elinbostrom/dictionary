@@ -19,7 +19,8 @@ const styles = createUseStyles({
     marginInline: '1rem',
     display: 'flex',
     justifyContent: 'center',
-    padding: '2rem'
+    padding: '2rem',
+    minHeight: 500
   },
   text: {
     color: 'white',
